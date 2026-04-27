@@ -18,6 +18,7 @@ public class UserController {
 		return new String[] { "사과", "포도", "수박", "참외" };
 	}
 
+
 	@RequestMapping(value = "/userForm", method = RequestMethod.GET)
 	public String userForm() {
 		System.out.println("----- UserController.userForm() : GET -----");
