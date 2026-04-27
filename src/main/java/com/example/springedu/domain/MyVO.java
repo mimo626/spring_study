@@ -10,5 +10,13 @@ import lombok.ToString;
 @ToString
 public class MyVO {
 	private int myNumber;
-	private String myColor;	
+	private String myColor;
+
+//	@Override
+//	public String toString() {
+//		return "MyVO{" +
+//				"myNumber=" + myNumber +
+//				", myColor='" + myColor + '\'' +
+//				'}';
+//	}
 }
