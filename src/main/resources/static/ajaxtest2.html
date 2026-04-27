@@ -9,12 +9,14 @@
 		request.onload = function(){
 			if (request.status == 200) {
 				var result = document.getElementById("result");
-				result.innerHTML += "<h3>"+request.responseText+"</h3>";	
+				result.innerHTML += "<h3>"+request.responseText+"</h3>";
+				console.log(request.responseText);
 				let jsonDOM = JSON.parse(request.responseText);
+				console.log(jsonDOM);
 				alert(jsonDOM.name);
 			}
 		};
-		request.open('GET', '/'+target+'?id=DUKE', true);
+		request.open('GET', '/'+target+'?id=alswn', true);
 		request.send();
 	}
 </script>
