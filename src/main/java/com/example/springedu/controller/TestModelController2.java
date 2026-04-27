@@ -15,9 +15,8 @@ public class TestModelController2 {
 		return 200;
 	}
 	@RequestMapping(value="/modeltest2")
-	public String handle(@ModelAttribute("data1") int vo1, 
-			      @ModelAttribute("data2") int vo2) {		
-		System.out.println("handle 에서 출력 : "+vo1 + " - " + vo2);
+	public String handle() {
+//		System.out.println("handle 에서 출력 : "+vo1 + " - " + vo2);
 		System.out.println("=============================");
 		return "modelResult2";
 	}	
