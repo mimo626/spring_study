@@ -9,6 +9,7 @@
 <hr>
 <ul>
 <li th:text="${v1}">Thymeleaf</li>
+<!--	테스트!!-->
 <hr>
 <li>Array</li>
 	<ul>
@@ -17,26 +18,36 @@
 	<li th:text="${v2[2]}">Thymeleaf</li>
 	<li th:text="${v2[3]}">Thymeleaf</li>
 	</ul>
+	<!--		10 20 30 40 -->
+
 	<br>
 	<ul th:each="elem : ${v2}">
 		<li th:text="${elem}">Thymeleaf</li>
 	</ul>
-<hr>
+	<!--		10 20 30 40 50-->
+
+	<hr>
 <li th:text="${v3}">Thymeleaf</li>
+<!--	MyVO( 23, "yellow") -> MyVO(myNumber=23, myColor=yellow)-->
 	<ul>
 	<li th:text="${v3.myColor}">Thymeleaf</li>
 	<li th:text="${v3.myNumber}">Thymeleaf</li>
 	</ul>
+<!--	yellow 23-->
 <li th:text="${v4}">Thymeleaf</li>
-<li>List</li>
+	<!--	2026-04-22 -> Wed Apr 22 10:30:28 KST 2026 -->
+	<li>List</li>
 	<ul>
 	<li th:text="${v5[0].myColor}">Thymeleaf</li>
 	<li th:text="${v5[1].myColor}">Thymeleaf</li>
 	</ul>
+<!--	red pink-->
 	<br>
 	<ul th:each="elem : ${v5}">
 		<li th:text="${elem.myColor}">Thymeleaf</li>
+		<li th:text="${elem.myNumber}">Thymeleaf</li>
 	</ul>
+	<!--	red pink-->
 </ul> 
 </body>
 </html>
