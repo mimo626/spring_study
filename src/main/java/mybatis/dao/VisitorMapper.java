@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface VisitorMapper {
-	@Select("select id, name, date_format(writedate, '%Y년 %m월 %d일') writedate, memo from visitor")
+	@Select("select id, name, date_format(writedate, '%Y년 %m월 %d일') writedate, memo from visitor order by writedate desc")
 	public List<VisitorDTO> list();
 	@Select("select id, name, date_format(writedate, '%Y년 %m월 %d일') writedate, memo from visitor where id = #{id}")
 	public VisitorDTO one(int id);
