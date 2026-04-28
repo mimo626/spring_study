@@ -21,7 +21,7 @@ public class VisitorController {
 	public ModelAndView list() {
 		List<VisitorDTO> list = dao.list();
 		ModelAndView mav = new ModelAndView();	
-		if (list.size() != 0) {
+		if (!list.isEmpty()) {
 			mav.addObject("list", list);
 		} else {
 			mav.addObject("msg", "추출된 결과가 없어요");
@@ -35,7 +35,7 @@ public class VisitorController {
 		List<VisitorDTO> list = dao.search(key);
 		System.out.println(list.size());
 		ModelAndView mav = new ModelAndView();
-		if (list.size() != 0) {
+		if (!list.isEmpty()) {
 			mav.addObject("list", list);
 		} else {
 			mav.addObject("msg", "추출된 결과가 없어요");
