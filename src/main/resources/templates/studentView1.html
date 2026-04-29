@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'Cafe24Surround';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+        font-weight: normal;
+        font-display: swap;
+    }
+    body {
+        text-align: center;
+        font-family: 'Cafe24Surround';
+    }
+    div {
+
+        margin 20px auto;
+    }
+   div {
+        margin: 20px auto;
+    }
+    table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    td {
+        padding: 15px 30px;
+        border-bottom: 1px solid #eeeeee;
+        font-size: 18px;
+    }
+    tr:last-child td {
+        border-bottom: none;
+    }
+    input {
+    margin: 10px;
+    }
+
+    .insert-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 20px 0;
+        background-color: #f1f3f5;
+        color: #333;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .inputForm input[type="text"],
+    .inputForm input[type="number"] {
+        width: 250px;
+        padding: 15px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: 'Cafe24Surround';
+        box-sizing: border-box;
+    }
+
+    .inputForm input[type="submit"] {
+        width: 250px;
+        padding: 15px;
+        margin-top: 15px;
+        font-size: 18px;
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: 'Cafe24Surround';
+        font-weight: bold;
+        transition: 0.2s;
+    }
+    #sqlInsertError {
+        color: red;
+    }
+</style>
+<body>
+<h1>학생 정보</h1>
+<hr>
+<div class="studentInfo">
+    <th:block th:if="${msg}">
+        <h2>[[${msg}]]</h2>
+    </th:block>
+    <table>
+        <th:block th:if="${list}">
+            <tr th:each=" s : ${list}">
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.score}"></td>
+                <td><a th:href="@{/delete(name=${s.name})}"><img src="/images/delete.png" width="38"></a></td>
+            </tr>
+        </th:block>
+
+            <th:block th:if="${score}">
+                <tr>
+                    <td th:text="${param.name}"></td>
+                    <td th:text="${score}"></td>
+                </tr>
+            </th:block>
+
+            <th:block th:if="${avgScore}">
+                <tr>
+                    <td>평균 점수</td>
+                    <td th:text="${avgScore}"></td>
+                </tr>
+            </th:block>
+    </table>
+    <a class="insert-btn" onclick="showInputForm()">학생 정보 입력</a>
+
+    <div class="inputForm" style="display: none">
+        <form action="/insert" method="post">
+            <input type="text" name="name" placeholder="이름 입력" required value=""><br>
+            <input type="number" name="score" placeholder="점수(0~100) 입력" min="0" max="100" required value=""><br>
+            <input type="submit" value="저장">
+        </form>
+    </div>
+    <h3 id="sqlInsertError" th:if="${sqlInsertError}" th:text="${sqlInsertError}"></h3>
+</div>
+<script th:inline="javascript">
+    let insertFail = [[${insertFail}]];
+    let sqlInsertError = [[${sqlInsertError}]];
+
+    if(insertFail) {
+        alert(insertFail);
+        document.querySelector('.inputForm').style.display = 'block';
+    }
+    if(sqlInsertError) {
+        document.querySelector('.inputForm').style.display = 'block';
+    }
+</script>
+<script>
+    function showInputForm() {
+        document.querySelector('.inputForm').style.display = 'block';
+    }
+</script>
+</body>
+</html>
